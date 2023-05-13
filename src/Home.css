@@ -1,0 +1,46 @@
+.carousel-container {
+    position: relative;
+    margin-bottom: 60px;
+   
+}
+
+
+.ppp {
+    position: absolute;
+    bottom: 50px;
+    right: 11rem;
+    font-size: 50px;
+    color: aliceblue;
+    background-color: #FF3811;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.pppp {
+    position: absolute;
+    bottom: 50px;
+    right: 7rem;
+    font-size: 50px;
+    color: aliceblue;
+    background-color: #FF3811;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.bt {
+    top: 100px;
+    left: 20px;
+}
+
+.gr {
+    background-image: linear-gradient(to right, red , yellow);
+}
+.s2_2{
+    top: 50%;
+    right: 0;
+}
+.s3{
+    margin-top: 130px;
+}
