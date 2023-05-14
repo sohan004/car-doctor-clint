@@ -1,15 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContex } from './AuthProvider';
 import { useTitle } from './useHook';
+import Swal from 'sweetalert2';
 
 const ServiceDetails = () => {
     const { _id, img, price, title } = useLoaderData()
     const { user } = useContext(AuthContex)
     useTitle(`SERVICE - ${title}`)
+    const [loader, setLoader] = useState(true)
 
     const handle = e => {
         e.preventDefault()
+        setLoader(false)
         const serviceName = e.target.name.value
         const servicePrice = e.target.price.value
         const serviceDate = e.target.date.value
@@ -25,13 +28,18 @@ const ServiceDetails = () => {
         })
             .then(res => res.json()).then(data => {
                 if (data.insertedId) {
-                    alert('add service successfully')
+                    setLoader(true)
+                    Swal.fire(
+                        'service add succesfully',
+                        'You clicked the button!',
+                        'success'
+                    )
                 }
             })
 
     }
     return (
-        <div className='container'>
+        loader ? <div className='container'>
             <form onSubmit={handle} action="">
                 <div className="row g-3">
                     <div className="col-6">
@@ -65,6 +73,10 @@ const ServiceDetails = () => {
                     </div>
                 </div>
             </form>
+        </div> : <div className="d-flex justify-content-center">
+            <div className="spinner-border mt-5 " role="status">
+                <span className="visually-hidden ">Loading...</span>
+            </div>
         </div>
     );
 };
